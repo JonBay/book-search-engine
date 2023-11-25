@@ -1,33 +1,50 @@
-const typeDefs = `
-  type Profile {
-    _id: ID
-    name: String
-    email: String
-    # There is now a field to store the user's password
-    password: String
-    skills: [String]!
-  }
+const gql = require("graphql-tag");  //got the idea of using this graphql library from a group member
 
-  # Set up an Auth type to handle returning data from a profile creating or user login
-  type Auth {
-    token: ID!
-    profile: Profile
-  }
+const typeDefs = gql`
+    input BookInput {
+        bookId: String!
+        authors: [String]
+        description: String!
+        title: String!
+        image: String
+        link: String
+    }
 
-  type Query {
-    profiles: [Profile]!
-    profile(profileId: ID!): Profile
-  }
 
-  type Mutation {
-    # Set up mutations to handle creating a profile or logging into a profile and return Auth type
-    addProfile(name: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
+    type Query {
+        me: User
+    }
 
-    addSkill(profileId: ID!, skill: String!): Profile
-    removeProfile(profileId: ID!): Profile
-    removeSkill(profileId: ID!, skill: String!): Profile
-  }
+    type Mutation {
+        login(email: String!, password: String!): Auth
+        addUser(username: String!, email: String!, password: String!): Auth
+        saveBook(bookData: BookInput!): User
+        removeBook(bookId: ID!): User
+    }
+
+    type User {
+        _id: ID!
+        username: String!
+        email: String!
+        bookCount: Int
+        savedBooks: [Book]
+    }
+
+    type Book {
+        bookId: ID!
+        authors: [String]
+        description: String
+        title: String!
+        image: String
+        link: String
+    }
+
+    type Auth {
+        token: ID!
+        user: User
+    }
 `;
+
+
 
 module.exports = typeDefs;
