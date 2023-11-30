@@ -5,6 +5,9 @@
   ## Description
   A page where you can search for a book by title or author using the google API and receive back a picture and results.  You can also log in and create a user profle that will save your searched books.  The project uses Apollo and GraphQL. 
 
+  ![Book Search](https://github.com/JonBay/book-search-engine/assets/134355923/5e66c566-3506-48da-8f83-24c6072eb961)
+
+
   ## Table of Contents 
   - [Description](#description)
   - [Installation](#installation)
