@@ -32,6 +32,8 @@
   ## Contributing
   JonBay
 
+  I also received help on this project from JJ Saoit and Salvador Mejia as well as SE -central grader.  
+
   ## Tests
   No test instructions for this project.  
 
