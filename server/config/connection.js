@@ -1,7 +1,9 @@
-const mongoose = require("mongoose");
+const { connect, connection } = require("mongoose");
+require("dotenv").config();
 
-mongoose.connect(
-  process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/googlebooks"
-);
 
-module.exports = mongoose.connection;
+const mongoURL = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/googlebooks';
+
+connect(mongoURL);
+
+module.exports = connection;
